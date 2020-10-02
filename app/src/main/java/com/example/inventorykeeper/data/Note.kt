@@ -1,4 +1,4 @@
-package com.example.inventorykeeper.helper
+package com.example.inventorykeeper.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

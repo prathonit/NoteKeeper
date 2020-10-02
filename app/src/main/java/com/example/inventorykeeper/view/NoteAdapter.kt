@@ -1,4 +1,4 @@
-package com.example.inventorykeeper.helper
+package com.example.inventorykeeper.view
 
 import android.text.format.DateFormat
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventorykeeper.R
+import com.example.inventorykeeper.data.Note
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 

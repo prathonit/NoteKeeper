@@ -1,13 +1,13 @@
-package com.example.inventorykeeper.helper
+package com.example.inventorykeeper.model
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.inventorykeeper.data.Note
 
 @Dao
 interface NoteDao {
 
     @Query("SELECT * FROM notes_table ORDER BY date DESC")
-    fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): List<Note>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: Note)

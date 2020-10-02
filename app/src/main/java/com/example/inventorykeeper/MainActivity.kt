@@ -1,22 +1,19 @@
 package com.example.inventorykeeper
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
-import com.example.inventorykeeper.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        binding.navView.setupWithNavController(navController)
+        nav_view.setupWithNavController(Navigation.findNavController(this, R.id.nav_host))
     }
 }
