@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.inventorykeeper.ui.DashboardFragment"
+        android:label="@string/title_all_items"
+        tools:layout="@layout/fragment_add_note" />
+
+    <fragment
+        android:id="@+id/navigation_add_item"
+        android:name="com.example.inventorykeeper.ui.AddNoteFragment"
+        android:label="@string/title_add_note"
+        tools:layout="@layout/fragment_dashboard" />
+
+</navigation>
