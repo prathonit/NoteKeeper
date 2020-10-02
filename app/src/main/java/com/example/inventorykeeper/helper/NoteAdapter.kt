@@ -1,23 +1,22 @@
 package com.example.inventorykeeper.helper
 
-import android.content.Context
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.inventorykeeper.R
 
-class NoteAdapter internal constructor(
-    context: Context
-) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var notes = emptyList<Note>()
+    var notes = emptyList<Note>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    private val dateFormat = DateFormat.getDateFormat(context)
+    private lateinit var dateFormat: java.text.DateFormat
 
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val noteTitleText: TextView = itemView.findViewById(R.id.note_title_text)
@@ -26,8 +25,10 @@ class NoteAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val itemView = inflater.inflate(R.layout.note_list_item, parent, false)
-        return NoteViewHolder(itemView)
+        dateFormat = DateFormat.getDateFormat(parent.context)
+        return NoteViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.note_list_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
@@ -38,11 +39,5 @@ class NoteAdapter internal constructor(
         holder.noteDateText.text = dateFormat.format(note.date)
     }
 
-    internal fun setNotes(notes: List<Note>) {
-        this.notes = notes
-        notifyDataSetChanged()
-    }
-
     override fun getItemCount(): Int = notes.size
-
 }
