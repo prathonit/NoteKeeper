@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.inventorykeeper.ui.DashboardFragment"
+        android:name="com.example.inventorykeeper.view.DashboardFragment"
         android:label="@string/title_all_items"
         tools:layout="@layout/fragment_add_note" />
 
     <fragment
         android:id="@+id/navigation_add_item"
-        android:name="com.example.inventorykeeper.ui.AddNoteFragment"
+        android:name="com.example.inventorykeeper.view.AddNoteFragment"
         android:label="@string/title_add_note"
         tools:layout="@layout/fragment_dashboard" />
 

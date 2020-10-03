@@ -1,14 +1,17 @@
-package com.example.inventorykeeper.ui
+package com.example.inventorykeeper.view
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.inventorykeeper.R
-import com.example.inventorykeeper.helper.Note
+import com.example.inventorykeeper.data.Note
+import com.example.inventorykeeper.viewmodel.DatabaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_add_note.*
 import java.util.*
 
+@AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private val viewModel by activityViewModels<DatabaseViewModel>()
@@ -19,16 +22,18 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         add_note_button.setOnClickListener {
             var title = "Untitled"
             var body = "No body"
-            if(!title_edit.text.isNullOrBlank())
+            if (!title_edit.text.isNullOrBlank())
                 title = title_edit.text.toString()
-            if(!body_edit.text.isNullOrBlank())
+            if (!body_edit.text.isNullOrBlank())
                 body = body_edit.text.toString()
-            viewModel.insert(Note(
-                0,
-                title,
-                body,
-                Date().time
-            ))
+            viewModel.insert(
+                Note(
+                    0,
+                    title,
+                    body,
+                    Date().time
+                )
+            )
         }
     }
 }
