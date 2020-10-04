@@ -25,7 +25,7 @@ class DatabaseViewModel @ViewModelInject constructor(private val repository: Not
 
     fun insert(note: Note) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(note)
-        getNotes()
+        _notes.postValue(repository.getAllNotes())
     }
 
     init {
